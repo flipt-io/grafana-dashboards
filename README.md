@@ -2,8 +2,8 @@ Flipt Grafana Dashboards
 ------------------------
 
 This repository contains re-usable Grafana dashboards.
-By default, the repository is configured to bootstrap an example Flipt, Postgres, Prometheus and Grafana example setup.
 
+This project contains an example docker compose Flipt setup, which demonstrates the dashboards.
 The dashboards, datasources and prometheus are all configured based on this scenario.
 
 ## Dependencies
@@ -25,8 +25,13 @@ The compose setup is configured with a single instance of each of the following:
 docker-compose up
 ```
 
+Navigate to [http://localhost:3000](Grafana) in your browser and login with the default credentials:
+
+- Username: `admin`
+- Password: `admin`
+
 ## Installation
 
-The dashboards in the `dashboards/Flipt` folder can be simply imported using Grafanas `import` functionality.
+The dashboards in the `dashboards/Flipt` folder can be simply imported using Grafana's `import` functionality.
 You may need to adjust the name, `uid` and potentially the datasources in your scenario.
 This will depend on how and where you configure and run prometheus.
