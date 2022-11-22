@@ -25,7 +25,7 @@ The compose setup is configured with a single instance of each of the following:
 docker-compose up
 ```
 
-Navigate to [http://localhost:3000](Grafana) in your browser and login with the default credentials:
+Navigate to [Grafana](http://localhost:3000) in your browser and login with the default credentials:
 
 - Username: `admin`
 - Password: `admin`
