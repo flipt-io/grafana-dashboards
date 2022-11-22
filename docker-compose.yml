@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:12
+    networks:
+      - flipt
+    environment:
+      - POSTGRES_DB=flipt
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - "./prometheus.yml:/etc/prometheus/prometheus.yml"
+    networks:
+      - flipt
+
+  flipt:
+    image: flipt/flipt:latest
+    depends_on:
+      - prometheus
+      - postgres
+    ports:
+      - "8080:8080"
+      - "9000:9000"
+    networks:
+      - flipt
+    environment:
+      - "FLIPT_LOG_LEVEL=debug"
+      - "FLIPT_DB_URL=postgres://postgres:password@postgres:5432/flipt?sslmode=disable"
+
+  grafana:
+    image: grafana/grafana
+    restart: always
+    ports:
+      - 3000:3000
+    depends_on:
+      - prometheus
+    volumes:
+      - ./dashboards/:/etc/grafana/provisioning/dashboards/
+      - ./datasources/:/etc/grafana/provisioning/datasources/
+    networks:
+      - flipt
+
+networks:
+  flipt:
