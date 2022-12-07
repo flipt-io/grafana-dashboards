@@ -1,15 +1,18 @@
-Flipt Grafana Dashboards
-------------------------
+# Flipt Grafana Dashboards
 
-This repository contains re-usable Grafana dashboards.
+---
+
+This repository contains re-usable [Grafana](https://grafana.com) dashboards.
 
 This project contains an example docker compose Flipt setup, which demonstrates the dashboards.
 The dashboards, datasources and prometheus are all configured based on this scenario.
 
+![Flag Dashboard](img/flipt-flag-dash.png)
+
 ## Dependencies
 
-- Docker
-- Docker Compose
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
 
 ## Example
 
